@@ -99,7 +99,7 @@ Example
 
 Yes, we can use the index as keys, but it is not considered as a good practice to use them because if the order of items may change. This can negatively impact performance and may cause issues with component state. Keys are taken from each object which is being rendered. There might be a possibility that if we modify the incoming data react may render them in unusual order.
 
-So, Unique key (bestt)>>>> Index key (Not preferred)>> No key(should not be the case)
+So,no key (not acceptable)<<<<<<<<<<< index key(last option) <<<<< unquie key (best practice)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Q: What is props in React? Ways to.
