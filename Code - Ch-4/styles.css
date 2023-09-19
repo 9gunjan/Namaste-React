@@ -1,0 +1,64 @@
+.header {
+  background-color: #dc2626;
+  display: flex;
+  justify-content: space-between ;
+  margin: 10px;
+  border: 1px solid black;
+  font-size: large;
+  font-family:sans-serif;
+}
+
+.nav-items > ul{
+  list-style-type: none;
+  display: flex;
+  margin-top: 50px;
+  margin-right:20px;
+}
+
+.nav-items > ul > li{
+  padding: 10px;
+}
+
+.logo{
+  width: 200px;
+  border-radius: 10%;
+  padding: 10px;
+  margin-left: 10px; 
+  margin-top:10px;
+}
+
+/* Card styling */
+
+.card{
+  width: 200px;
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card>img{
+  width: 100%;
+  border-radius: 10px;
+}
+
+.restrauntList{
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}
+
+.footer{
+  margin: 10px;
+  width: auto;
+  text-align: center;
+  background-color: #dc2626;
+  padding: 20px 10px 20px;
+  border-radius: 5px;
+  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  font-family:sans-serif;
+}
+
