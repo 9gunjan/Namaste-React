@@ -1,0 +1,142 @@
+Q: What is the difference between Named export, Default export, and * as export?
+
+ES6 provides us to import & export a module and use it in other files. ES6 provides two ways to export a module from a file: named export and default export. 
+
+=> In Named export, one can have multiple named exports per file. Then import the specific exports they want surrounded in {} braces. The name of imported module has to be the same as the name of the exported module. In Named export, the component is exported from MyComponent.js file like:
+
+export const MyComponent = () => {}
+export const MyComponent2 = () => {}
+and the component is imported from MyComponent.js file like: here we must use {} in MyComponent.
+
+// ex. importing a single named export
+import { MyComponent } from "./MyComponent";
+
+// ex. importing multiple named exports
+import { MyComponent, MyComponent2 } from "./MyComponent";
+
+// ex. giving a named import a different name by using "as":
+import { MyComponent2 as MyNewComponent } from "./MyComponent";
+
+=> In Default export, One can have only one default export per file. The naming of import is completely independent in default export and we can use any name we like. In Default export, the component is exported from MyComponent.js file like:
+
+const MyComponent = () => {}
+export default MyComponent;
+
+and the component is imported from MyComponent.js file like: here we must omit {} in MyComponent.
+
+import MyComponent from "./MyComponent";
+In * as export, it is used to import the whole module as a component and access the components inside the module. In * as export, the component is exported from MyComponent.js file like:
+
+export const MyComponent = () => {}
+export const MyComponent2 = () => {}
+export const MyComponent3 = () => {}
+and the component is imported from MyComponent.js file like:
+
+import * as MainComponents from "./MyComponent";
+Now we can use them in JSX as:
+
+<MainComponents.MyComponent />
+<MainComponents.MyComponent2 />
+<MainComponents.MyComponent3 />
+
+=> We can use Named export and Default export together. So you should export like:
+
+export const MyComponent2 = () => {}
+const MyComponent = () => {}
+export default MyComponent;
+and import like:
+
+import MyComponent, {MyComponent2} from "./MyComponent";
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Q: What is the importance of config.js file?
+
+In a React.js application, the config.js file typically does not have a specific or standardized role in the React framework itself. React applications primarily use JavaScript files, JSX files, and configuration files like package.json and .babelrc for various purposes.
+
+However, the term "config.js" might refer to a custom configuration file that a developer or a project uses to store various configuration settings or environment variables. Here are some common use cases and the importance of such a configuration file in a React.js project:
+
+Environment Variables: Storing environment-specific variables like API keys, database connection strings, or other sensitive information. Using a separate config.js file allows you to manage these variables easily for different environments (development, production, etc.) without exposing them in your source code.
+
+ In simple terms, a config.js file in a React.js project is like a special file where you can keep important settings and information for your web application. It's like having a list of instructions and details that your app needs to work properly.
+
+Here's why it's important:
+
+Secret Information: Imagine your app needs a secret code (like a password) to connect to a database or a special service. You wouldn't want to put that secret code directly into your app's main code because others could see it. So, you put it in the config.js file, which is hidden and secure.
+
+Easy Changes: Sometimes, you might want to change how your app works without messing up all your code. Instead of searching through lots of files, you can change things in the config.js file. It's like having a control panel for your app's settings.
+
+Different Situations: Your app might behave differently when it's being developed, tested, or used by people. With a config.js file, you can set rules for each situation. It's like telling your app how to act in different situations.
+
+Adding New Features: If you want to add cool new things to your app or connect it to other services, you can use the config.js file to make those changes without rewriting everything.
+
+Building the App: Sometimes, your app needs to be put together and prepared before people can use it. The config.js file can also help with that process by storing the instructions for how to build your app.
+
+So, think of the config.js file as a hidden notebook where your app keeps its important notes and instructions, making it easier to manage and control how your app works.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Q: What are React Hooks?
+
+ Imagine you're building a house with different rooms, and you want to control things in those rooms.
+
+React Hooks are like special tools that help you control and organize those rooms (components) more easily.
+
+useState:This Hook allows you to add state to your functional components. You can create and manage variables that hold data that can change over time. For example, you can use it to manage the state of a counter or form input. (It's like having a notepad to keep track of how many chairs are in each room. You can update the count whenever you add or remove chairs.)
+
+useEffect:  useEffect Hook lets you perform side effects in your components. Side effects can include data fetching, DOM manipulation, or subscribing to external data sources. It's similar to the lifecycle methods in class components but designed for functional components.(This tool helps you set up things like turning on the lights in a room when someone enters. You can also use it to clean up the room when someone leaves.)
+
+useContext: useContext Hook enables you to access the React context API within functional components. Context is used for sharing data like a theme or user authentication status across multiple components in your application.(Think of this as a way to share information between rooms. For example, you can use it to tell all the rooms what color the walls should be.)
+
+useReducer: This Hook is often used for managing more complex state logic. It's similar to useState but gives you more control over how the state updates. It's often used when the state transitions are dependent on the previous state. (It's like having a plan for how to rearrange furniture in a room, and you can follow that plan step by step.)
+
+useRef:  useRef Hook allows you to create a mutable ref object. It's handy for accessing and interacting with DOM elements directly or for persisting values between renders without causing re-renders.(Imagine you have a label maker to put stickers on things in a room. You can use it to remember specific items, like a special chair.)
+
+Custom Hooks: These are like toolkits you create for your own special tasks. For instance, you can create a toolkit for organizing your books in different rooms.
+
+React Hooks are like these handy tools that make it easier to manage what's happening in each room of your house (each component of your app) and how they interact with each other. They help you keep things organized and make your work more efficient when building web applications with React.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q: Why do we need useState Hook?
+
+We need the useState Hook in React to manage and update state within functional components. State is essentially data that can change over time and affects how a component behaves and renders. The useState Hook allows functional components to have their own state, which was previously only possible with class components.
+
+Here's why the useState Hook is important:
+
+Managing Component State: Functional components are simpler and more lightweight than class components, and Hooks like useState make it possible for them to handle state. You can use it to store and update data that should be remembered by a component, like the current value of an input field or whether a modal is open or closed.
+
+Reactive UI: React components re-render when their state changes. useState allows you to change the state, triggering a re-render of the component, which then updates the user interface to reflect the new state. This enables dynamic and interactive user interfaces.
+
+Encapsulation: Each component can have its own isolated state. This means you can have multiple instances of the same component on a page, each with its own unique state, without interfering with each other. It promotes encapsulation and helps keep your code organized.
+
+Functional Paradigm: Hooks align with the functional programming paradigm, making it easier to reason about your component's behavior and test it. It encourages a more declarative and predictable coding style.
+
+Here's a simple example of how useState is used:
+
+jsx
+Copy code
+import React, { useState } from 'react';
+
+function Counter() {
+  // Initialize a state variable "count" with an initial value of 0
+  const [count, setCount] = useState(0);
+
+  // When the "Increment" button is clicked, update the "count" state
+  const handleIncrement = () => {
+    setCount(count + 1); // This updates the state and triggers a re-render
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleIncrement}>Increment</button>
+    </div>
+  );
+}
+
+export default Counter;
+
+In this example, useState is used to create a state variable called count, which starts at 0. When the "Increment" button is clicked, setCount is used to update the count state, causing the component to re-render with the new count value.
+
+In summary, the useState Hook is essential in React because it enables functional components to manage and respond to changes in state, making it possible to create dynamic and interactive user interfaces.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
