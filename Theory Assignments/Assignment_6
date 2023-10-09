@@ -1,0 +1,179 @@
+Q: What is Microservice?
+
+A microservice is a software architectural style in which an application is composed of small, independently deployable, and loosely coupled services that work together to provide the application's overall functionality. Instead of building a monolithic application where all features are tightly integrated into a single codebase, a microservices architecture breaks down the application into smaller, specialized services that can be developed, deployed, and scaled independently.
+Key characteristics and concepts of microservices include:
+
+=> Independence: Each microservice is a self-contained unit that can be developed, tested, and deployed independently of other services. This means that different teams can work on different microservices without interfering with each other.
+=> Loose Coupling: Microservices communicate with each other through well-defined APIs (typically over HTTP or messaging protocols). This loose coupling allows services to be replaced, updated, or scaled without affecting the entire application.
+=> Scalability: Since services are separate, you can scale individual microservices independently based on their specific needs. This helps optimize resource usage and maintain performance.
+=> Resilience: Microservices can be designed to be resilient. If one service fails, it doesn't necessarily bring down the entire application, as other services may continue to function.
+=> Technology Diversity: Different microservices can use different programming languages, databases, and technologies that are best suited to their specific tasks.
+=> Deployment Flexibility: Microservices can be deployed independently, which allows for more frequent updates and faster deployment cycles.
+=> Easier Maintenance: Smaller codebases are easier to understand and maintain. Bugs and issues can be isolated to specific services, making debugging and troubleshooting more manageable.
+=> Domain-Driven Design: Microservices often align with domain-driven design principles, where each service corresponds to a specific business domain or capability.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Q: What is Monolith architecture?
+
+Monolith architecture, also known as a monolithic architecture or monolithic application, is a traditional software design approach where all the components and functionality of an application are tightly integrated and packaged as a single, indivisible unit. In a monolith, the entire application, including its user interface, business logic, and data access layer, is developed and deployed as a single codebase and executable.
+Key characteristics of monolith architecture include:
+
+=> Single Codebase: The entire application, from front-end to back-end, is contained within a single codebase or code repository.
+=> Tight Coupling: Components and modules within the application are tightly coupled and interdependent. Changes to one part of the application can affect other parts.
+=> Deployment as a Whole: Updates or changes to any part of the application require redeploying the entire monolith, including parts that haven't changed.
+=> Limited Scalability: It can be challenging to scale individual components of the application independently. Scaling typically involves replicating the entire monolith, which can be inefficient.
+=> Development Challenges: Large monolithic codebases can become difficult to manage, understand, and maintain, especially as the application grows.
+=> Testing Complexity: Testing can be complex, and it may be challenging to isolate and test individual components without affecting the entire application.
+=> Technology Homogeneity: Monoliths often use a single technology stack and programming language throughout the application.
+
+While monoliths have been widely used and are suitable for many applications, they have some limitations. As applications grow in size and complexity, monolithic architecture can lead to issues such as slower development cycles, scalability challenges, and difficulties in adapting to changing business requirements.
+
+In response to these challenges, some organizations have adopted microservices architecture, which involves breaking down a monolithic application into smaller, more independently deployable services. Microservices offer advantages such as greater scalability, easier maintenance, and the ability to use different technologies for different services. 
+
+===================================================================================================================================================================Q: What is the difference between Monolith and Microservice?
+
+With monolithic architectures, all processes are tightly coupled and run as a single service. This means that if one process of the application experiences a spike in demand, the entire architecture must be scaled. Adding or improving a monolithic application’s features becomes more complex as the code base grows. This complexity limits experimentation and makes it difficult to implement new ideas. Monolithic architectures add risk for application availability because many dependent and tightly coupled processes increase the impact of a single process failure.
+
+With a microservices architecture, an application is built as independent components that run each application process as a service. These services communicate via a well-defined interface using lightweight APIs. Services are built for business capabilities and each service performs a single function. Because they are independently run, each service can be updated, deployed, and scaled to meet demand for specific functions of an application.
+
+===================================================================================================================================================================Q: Why do we need a useEffect Hook?
+
+useEffect Hook is javascript function provided by react. The useEffect Hook allows you to eliminate side effects in your components. Some examples of side effects are: fetching API data, directly updating the DOM, and setting up subscriptions or timers, etc can be lead to unwarranted side-effects. useEffect accepts two arguments, a callback function and a dependency array. The second argument is optional.
+
+useEffect(() => {}, [])
+
+The () => {} is callback function and [] is called a empty dependency array. If anything that we pass (suppose currentState) inside the [] it trigger the callback function and changes the state of the application.
+
+useEffect(() => {
+    setCurrentState("true");
+}, [currentState])
+
+If we do not pass empty dependency array then the useEffect runs everytime when the UI is rendered.
+
+useEffect(() => {})
+
+(The useEffect hook in React is like a special tool that helps you do extra tasks in your web application, such as getting information from the internet or making things change on the screen when you interact with it. It's like having a helper who watches for certain events and does specific jobs when those events happen, without disrupting everything else.
+Here's why we need it:
+=> Async Jobs: Sometimes, the computer needs time to get data from the internet or do other jobs. useEffect helps you manage these jobs and make sure they happen at the right time.
+=> Clean Up: It also helps you tidy up after these jobs are done, so your app doesn't waste memory or slow down over time.
+=> Timing Control: You can tell useEffect when to start and stop doing these tasks, so they don't happen too often or too rarely.
+Think of useEffect as your app's helper that keeps things running smoothly, even when there are behind-the-scenes tasks to handle.)
+
+===================================================================================================================================================================Q: What is Optional Chaining?
+
+Optional chaining is a feature in JavaScript (introduced in ECMAScript 2020) that provides a convenient and safe way to access properties or methods of an object when you're not certain whether those properties or methods exist. It helps prevent errors that can occur when trying to access properties on undefined or null values.
+Here's a simple explanation:
+Imagine you have an object, and you want to access a property within that object. Normally, you would do something like this:
+
+const value = myObject.someProperty;
+
+However, if myObject is undefined or null, this would result in an error, and your program would stop working.
+
+With optional chaining, you can use the ?. operator to safely access properties or methods. If the property or method exists, it returns the value; if not, it returns undefined:
+
+const value = myObject?.someProperty;
+
+If myObject is undefined or null, this code won't throw an error, and value will be set to undefined.
+
+You can also chain multiple optional operators together for nested properties or methods:
+
+const value = myObject?.nestedObject?.someProperty;
+
+If any part of this chain (myObject, nestedObject, or someProperty) is undefined or null, value will be undefined without causing an error.
+
+Optional chaining is especially helpful when working with data from APIs or external sources where the structure of the data may vary, and you want to avoid unexpected errors due to missing properties or methods.
+
+===================================================================================================================================================================Q: What is Shimmer UI?
+
+ A Shimmer UI resembles the page's actual UI, so users will understand how quickly the web or mobile app will load even before the content has shown up. It gives people an idea of what's about to come and what's happening (while UI currently loading) when a page full of content/data takes more than 3 - 5 seconds to load. Shimmer UI is a great way for loading the applications. Instead of showing a loading circle we can design a shimmer UI for our application that is good for user experience.
+
+===================================================================================================================================================================Q: What is the difference between JS expression and JS statement?
+
+=> A JS expression returns a value that we use in the application. for example:
+
+1 + 2 // expresses 
+"foo".toUpperCase() // expresses 'FOO'
+console.log(2) // logs '2'
+isTrue ? true : false // returns us a true or false value based on isTrue value
+
+=> A JS statement, does not return a value. for example:
+
+let x; // variable declaration
+if () { } // if condition
+
+If we want to use JS expression in JSX, we have to wrap in {/* expression slot */} and if we want to use JS statement in JSX, we have to wrap in {(/* statement slot */)};
+
+==================================================================================================================================================================Q: What is Conditional Rendering? explain with a code example.
+
+Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like if or the conditional operator to create elements representing the current state, and let React update the UI to match them. for example:
+
+// Using Ternary operator as a shorthand way or writing an if-else statement
+{isLoggedIn ? (return <UserGreeting />) : (return <GuestGreeting />)};
+// Using an if…else Statement
+{
+  (if (isLoggedIn) {
+    return <UserGreeting />;
+  }else {
+    return <GuestGreeting />;
+  })
+}
+// Using Logical &&
+{isLoggedIn && <button>Logout</button>}
+
+==================================================================================================================================================================Q: What is CORS?
+
+CORS stands for Cross-Origin Resource Sharing. It is a security feature implemented by web browsers that controls and restricts web applications running at one origin (domain) from making requests for resources (e.g., data, images, or scripts) hosted on a different origin.
+
+In simple terms:
+
+Origin: An origin consists of the combination of a scheme (like "http" or "https"), a domain (like "example.com"), and a port (like "80" or "443"). For example, "https://www.example.com:443" is an origin.
+
+Same-Origin Policy: Browsers have a security policy called the "same-origin policy." It prevents web pages from making requests to a different origin than the one that served the web page. This policy is designed to protect users from potentially malicious websites that might try to access their data from other sites without permission.
+
+CORS: CORS is a mechanism that relaxes the same-origin policy when it's safe to do so. It allows a web page at one origin to request and access resources from a different origin, but only if the server at the different origin explicitly allows it.
+
+Here's how CORS works:
+
+When a web page (origin A) makes a request to a different domain (origin B), the browser sends an HTTP request to origin B, along with an "Origin" header indicating the source of the request (origin A).
+
+The server at origin B can then decide whether to allow the request based on the source (origin A). If the server is configured to allow requests from origin A, it responds with the appropriate CORS headers, indicating that the request is allowed.
+
+If the server at origin B doesn't include the necessary CORS headers or explicitly denies the request, the browser will block the response, and JavaScript code on the web page at origin A won't be able to access it.
+
+CORS is crucial for web security and allows for the safe sharing of resources between different websites when explicitly permitted. It helps prevent unauthorized access to sensitive data while enabling legitimate cross-origin requests for services like APIs and content delivery.
+
+-----------
+
+Let's break down CORS (Cross-Origin Resource Sharing) in simple terms:
+
+Imagine you have a treasure chest in your house, and you want to share some of your treasure with your friends. However, you're a bit cautious about security.
+
+Your House: This is like your website or web application. It has the treasure (data, images, scripts) you want to share.
+
+Your Friends' Houses: These are other websites or web applications your friends have. They might want to access your treasure.
+
+Cautious Measures: You don't want just anyone to take your treasure. So, you have a rule: only friends who live in the same neighborhood as you can come over and access your treasure. If someone from a different neighborhood tries to visit, you say, "No, you can't come in."
+
+CORS: CORS is like the security system that enforces this rule. It checks where requests (your friends visiting) are coming from. If a request comes from a different "neighborhood" (origin/domain), it's blocked by the security system unless you explicitly say, "Yes, you can come in."
+
+So, CORS is all about allowing or denying access to resources (treasure) on your website from other websites (your friends' houses) based on certain rules to keep things secure. It helps prevent unauthorized access to your data while allowing trusted requests.
+==================================================================================================================================================================
+Q: What is async and await?
+
+ Async: It simply allows us to write promises-based code as if it was synchronous and it checks that we are not breaking the execution thread. It operates asynchronously via the event loop. Async functions will always return a promise. It makes sure that a promise is returned and if it is not returned then JavaScript automatically wraps it in a promise which is resolved with its value. Await: Await function is used to wait for the promise. It could be used within the async block only. It makes the code wait until the promise returns a result. It only makes the async block wait. for example:
+
+// async function getRestaurant to fetch Swiggy API data
+  async function getRestaurants() {
+    const data = await fetch(
+      "Swiggy_API_URL"
+    );
+    const json = await data.json();
+    // we get the Swiggy API data in json format
+    console.log(json);
+  }
+==================================================================================================================================================================
+Q: What is the use of const json = await data.json(); in getRestaurants()?
+
+The data object, returned by the await fetch(), is a generic placeholder for multiple data formats. so we can extract the JSON object from a fetch response by using await data.json(). data.json() is a method on the data object that lets you extract a JSON object from the data or response. The method returns a promise because we have used await keyword. so data.json() returns a promise resolved to a JSON object.
+
+==================================================================================================================================================================
