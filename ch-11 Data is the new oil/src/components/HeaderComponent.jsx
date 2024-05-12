@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState , useContext} from "react";
 import logo from "../assets/img/foodie express logo.jpg"
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
 
 const loggedInUser = () => {
   return false;
@@ -13,6 +14,8 @@ const loggedInUser = () => {
 
     const[isLoggedIn , setIsLoggedIn] = useState(false);
     const onlineStatus = useOnlineStatus();
+
+    const {loggedInUser} = useContext(UserContext);
 
     const Title = () => {
       return <div className="logo-container">
@@ -32,15 +35,17 @@ const loggedInUser = () => {
             <li className="px-4"><Link to="/about">About</Link></li>
             <li className="px-4"><Link to="/cart">Cart</Link></li>
             <li className="px-4"><Link to="/grocery">Grocery</Link></li>
-          </ul>
-        </div>
-        {/* ternary operator */}
-        {
+            {
           isLoggedIn ? 
           (<button className="logout-btn" onClick={() => setIsLoggedIn(false)}>Log Out</button>) 
           : 
           (<button className="login-btn" onClick={() => setIsLoggedIn(true)}>Login</button>)
         }
+            <li className="px-4 font-bold">{loggedInUser}</li>
+          </ul>
+        </div>
+        {/* ternary operator */}
+        
       
       
       </div>

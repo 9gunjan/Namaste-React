@@ -1,8 +1,10 @@
-import { useState , useEffect} from "react";
+import { useState , useEffect, useContext} from "react";
 import { restaurantList } from "../../utils/config.js";
-import RestrauntCard , {withOpenLabel} from "./RestrauntCard.jsx";
+import RestrauntCard from "./RestrauntCard.jsx";
 import Shimmer from "./Shimmer.jsx";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../utils/useOnlineStatus.js";
+import UserContext from "../../utils/UserContext.js";
 import useOnlineStatus from "../../utils/useOnlineStatus.js";
 
 
@@ -20,10 +22,6 @@ const BodyComponent = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
-
-  
-  const RestaurantCardPromoted = withOpenLabel(RestrauntCard);
-  console.log(filteredRestaurants);
 
   useEffect(() => {
     //API CALL
@@ -46,7 +44,11 @@ const BodyComponent = () => {
 
     if(onlineStatus === false){
       return <h1>Looks like you are offline. Please check your internet connection</h1>
-    }
+    };
+
+    const {setUserName, loggedInUser} = useContext(UserContext);
+
+
     
     
 
@@ -81,17 +83,18 @@ const BodyComponent = () => {
           Search
         </button>
       </div>
+      <div className="flex justify-center m-4 p-4 ">
+      <label><h2 className="font-bold bg-slate-200 p-2 rounded ">Username :</h2></label>
+        <input className="  bg-slate-200 p-1 rounded-lg  " value = {loggedInUser} onChange={(e) => {setUserName(e.target.value)}}></input>
+        
+      </div>
 
       {allRestaurants?.length === 0 ?  <Shimmer />  : (
       <div className="flex flex-wrap px-20">
         {filteredRestaurants.map((restaurant) => {
           return (
-            <Link to={"/restaurants/" + restaurant?.info.id} key={restaurant.info.id}> {restaurant?.info.isOpen ? (
-              <RestaurantCardPromoted resData={restaurant?.info} />
-            ) : (
-              <RestrauntCard resData={restaurant?.info} />
-            )}</Link>
-          ); 
+            <Link to={"/restaurants/" + restaurant.info.id} key={restaurant.info.id}><RestrauntCard  {...restaurant.info} /></Link>
+          );
         })}
       </div>
       )}

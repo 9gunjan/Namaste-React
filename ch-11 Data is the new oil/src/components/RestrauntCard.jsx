@@ -19,7 +19,7 @@ const RestrauntCard = ({
           }
         />
         <h2 className="font-bold py-4 text-lg">{name}</h2>
-        <h4>{cuisines ? cuisines.join(", ") : ""}</h4>
+        <h4>{cuisines.join(", ")}</h4>
         <h4>{areaName}</h4>
         <h4>{locality}</h4>
         <span>
@@ -31,16 +31,4 @@ const RestrauntCard = ({
     );
   };
 
-  export const withOpenLabel = (RestrauntCard) => {
-    return (props) => {
-      return (
-        <div>
-          <label className="absolute bg-black text-white m-2 p-2 rounded-lg">
-            Open
-          </label>
-          <RestrauntCard {...props} />
-        </div> 
-      );
-    };
-  };
 export default RestrauntCard;
